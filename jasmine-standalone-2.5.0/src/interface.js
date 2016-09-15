@@ -32,7 +32,7 @@ $( document ).ready(function() {
 
   function checkTemperature() {
 $('#temperature').text(thermostat.temperature);
-$('#temperature').attr('green', thermostat.energyChecker());
+$('#temperature').attr('class', thermostat.energyChecker());
 }
     // function checkTemperature() {
     //   $('#temperature').text(thermostat.temperature);
