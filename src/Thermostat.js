@@ -23,6 +23,9 @@ Thermostat.prototype = {
 
   turnPowerSavingOn: function() {
     this._powerSaving = true;
+    if (this._temperature > this.maxTemp()) {
+      this._temperature = this.maxTemp();
+    }
   },
 
   powerSavingIndicator: function() {
