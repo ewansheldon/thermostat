@@ -3,6 +3,17 @@ $( document ).ready(function() {
   var thermostat = new Thermostat();
   checkTemperature();
 
+  displayData();
+
+function displayData() {
+  $.get('http://api.openweathermap.org/data/2.5/weather?q=london&units=metric&APPID=558cadeaf010d77fe5755f6f362b01bf', function(data) {
+    $('#openweather').text(data.main.temp);
+    console.log(data);
+  });
+}
+
+
+
   $('#increasetemp').click(function() {
     thermostat.increaseTemperature();
     checkTemperature();
