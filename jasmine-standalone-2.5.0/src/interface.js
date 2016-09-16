@@ -3,15 +3,17 @@ $( document ).ready(function() {
   var thermostat = new Thermostat();
   checkTemperature();
 
-  displayData();
+  displayData('London');
 
-function displayData() {
-  $.get('http://api.openweathermap.org/data/2.5/weather?q=london&units=metric&APPID=558cadeaf010d77fe5755f6f362b01bf', function(data) {
+function displayData(city) {
+  var url = 'http://api.openweathermap.org/data/2.5/weather?q=';
+  var units = '&units=metric';
+  var apiKey = '&APPID=558cadeaf010d77fe5755f6f362b01bf';
+  $.get(url + city + units + apiKey, function(data) {
     $('#openweather').text(data.main.temp);
-    console.log(data);
   });
+  $('#currentCity').text(city);
 }
-
 
 
   $('#increasetemp').click(function() {
@@ -41,10 +43,16 @@ function displayData() {
     checkTemperature();
   });
 
-  function checkTemperature() {
-$('#temperature').text(thermostat.temperature);
-$('#temperature').attr('class', thermostat.energyChecker());
-}
+  $('#input-city').submit(function(event) {
+    event.preventDefault();
+    var city = $('#city').val();
+    displayData(city);
+  });
+
+    function checkTemperature() {
+  $('#temperature').text(thermostat.temperature);
+  $('#temperature').attr('class', thermostat.energyChecker());
+  }
     // function checkTemperature() {
     //   $('#temperature').text(thermostat.temperature);
     // }

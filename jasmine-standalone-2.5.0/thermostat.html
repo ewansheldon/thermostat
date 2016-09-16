@@ -13,7 +13,12 @@
     <button id="decreasetemp" type="button">Decrease Temperature</button>
     <button id="reset" type="button">Reset</button>
     <p id="temperature"></p>
-    Current temperature: <span id="openweather"></span>
+    <form id='input-city'>
+      City name:
+      <input id=city type='text'>
+      <input type='submit' value='submit'>
+    </form>
+    Current temperature in <span id="currentCity"></span>: <span id="openweather"></span>
   </body>
   <script src="src/jquery.js"></script>
   <script src="src/Thermostat.js"></script>
